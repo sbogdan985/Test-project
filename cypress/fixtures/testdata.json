@@ -1,0 +1,15 @@
+{
+    "firstName": "Slaven",
+    "lastName": "Bogdan",
+    "email": "slaven.bogdan@test.com",
+    "telephone": "099123456789",
+    "company": "Test Company",
+    "address": "Street 123",
+    "city": "Osijek",
+    "zip": "31000",
+    "phone": "0991234567",
+    "country": "Croatia",
+    "region": "Bristol",
+    "loginName": "slaven",
+    "password": "Test12345"
+  }
