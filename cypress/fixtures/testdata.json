@@ -1,7 +1,7 @@
 {
     "firstName": "Slaven",
     "lastName": "Bogdan",
-    "email": "slavenn@test.com",
+    "email": "slavenbo@test.com",
     "telephone": "099123456789",
     "company": "Test Company",
     "address": "Vukovarska 110",
@@ -10,7 +10,7 @@
     "phone": "0991234567",
     "country": "Croatia",
     "region": "Osijek-Baranja",
-    "loginName": "slavenn",
+    "loginName": "slavenbo",
     "password": "Test12345",
     "sucessfullyRegistrationText": "Your Account Has Been Created!",
     "firstName2": "Josip",
@@ -20,7 +20,8 @@
     "zip2": "10000",
     "country2": "Croatia",
     "region2": "Zagreb",
-    "productName": "Pour Homme Eau de Toilette"
+    "productName": "Pour Homme Eau de Toilette",
+    "emptyCartInfo": "Your shopping cart is empty"
     
 
   }

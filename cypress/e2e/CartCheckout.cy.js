@@ -16,16 +16,16 @@ describe('Cart and Checkout test suite', () => {
 
     it('User can add/remove a product to/from the cart', () => {
         cy.contains('#customernav', 'Login or register').click()
-        cy.loginAs(testData.firstName, testData.password)
+        cy.loginAs(testData.loginName, testData.password)
         addingProductToTheCart()
         cy.get('a[href="https://automationteststore.com/index.php?rt=checkout/cart&remove=63:545f48ecb97d7a1628419cf271302198"]').click()
-        cy.contains('.contentpanel', 'Your shopping cart is empty')
+        cy.contains('.contentpanel', testData.emptyCartInfo)
     })
 
 
     it('User can successfully confirm and place an Order', () => {
         cy.contains('#customernav', 'Login or register').click()
-        cy.loginAs(testData.firstName, testData.password)
+        cy.loginAs(testData.loginName, testData.password)
         addingProductToTheCart()
         cy.get('#cart_checkout2').click()
         cy.url().should('eq', Cypress.config().baseUrl + 'index.php?rt=checkout/confirm')
@@ -36,48 +36,36 @@ describe('Cart and Checkout test suite', () => {
 
     it('User can change Payment address information at Checkout', () => {
         cy.contains('#customernav', 'Login or register').click()
-        cy.loginAs(testData.firstName, testData.password)
+        cy.loginAs(testData.loginName, testData.password)
         addingProductToTheCart()
         cy.get('#cart_checkout2').click()
         cy.get('.confirm_payment_options').contains('Edit Payment').click()
         cy.contains('.input-group', 'Change Address').click()
-        cy.get('#Address2Frm_firstname').type(testData.firstName2)
-        cy.get('#Address2Frm_lastname').type(testData.lastName2)
-        cy.get('#Address2Frm_address_1').type(testData.address2)
-        cy.get('#Address2Frm_city').type(testData.city2)
-        cy.get('#Address2Frm_country_id').select(testData.country)
-        cy.get('#Address2Frm_zone_id').select(testData.region2)
-        cy.get('#Address2Frm_postcode').type(testData.zip2)
+        fillingInNewAddress()
         cy.get('.new_address').contains('Continue').click()
         cy.get('.confirm_payment_options').then(paymentdata => {
             cy.wrap(paymentdata).contains(testData.firstName2 && testData.lastName2 && testData.address2 && testData.city2 && testData.country).should('be.visible')
         })
         cy.visit('index.php?rt=checkout/cart')
         cy.get('a[href="https://automationteststore.com/index.php?rt=checkout/cart&remove=63:545f48ecb97d7a1628419cf271302198"]').click()
-        cy.contains('.contentpanel', 'Your shopping cart is empty')
+        cy.contains('.contentpanel', testData.emptyCartInfo)
     })
 
-    it.only('User can change Shipping address information at Checkout', () => {
+    it('User can change Shipping address information at Checkout', () => {
         cy.contains('#customernav', 'Login or register').click()
-        cy.loginAs(testData.firstName, testData.password)
+        cy.loginAs(testData.loginName, testData.password)
         addingProductToTheCart()
         cy.get('#cart_checkout2').click()
         cy.get('.confirm_shippment_options').contains('Edit Shipping').click()
         cy.contains('.input-group', 'Change Address').click()
-        cy.get('#Address2Frm_firstname').type(testData.firstName2)
-        cy.get('#Address2Frm_lastname').type(testData.lastName2)
-        cy.get('#Address2Frm_address_1').type(testData.address2)
-        cy.get('#Address2Frm_city').type(testData.city2)
-        cy.get('#Address2Frm_country_id').select(testData.country)
-        cy.get('#Address2Frm_zone_id').select(testData.region2)
-        cy.get('#Address2Frm_postcode').type(testData.zip2)
+        fillingInNewAddress()
         cy.get('.new_address').contains('Continue').click()
         cy.get('.confirm_payment_options').then(shippingdata => {
             cy.wrap(shippingdata).contains(testData.firstName2 && testData.lastName2 && testData.address2 && testData.city2 && testData.country).should('be.visible')
         })
         cy.visit('index.php?rt=checkout/cart')
         cy.get('a[href="https://automationteststore.com/index.php?rt=checkout/cart&remove=63:545f48ecb97d7a1628419cf271302198"]').click()
-        cy.contains('.contentpanel', 'Your shopping cart is empty')
+        cy.contains('.contentpanel', testData.emptyCartInfo)
     })
 
     function addingProductToTheCart() {
@@ -98,5 +86,14 @@ describe('Cart and Checkout test suite', () => {
         cy.get('#totals_table').find('tr').eq(2).should('contain', '$90.00')
     }
 
+    function fillingInNewAddress() {
+        cy.get('#Address2Frm_firstname').type(testData.firstName2)
+        cy.get('#Address2Frm_lastname').type(testData.lastName2)
+        cy.get('#Address2Frm_address_1').type(testData.address2)
+        cy.get('#Address2Frm_city').type(testData.city2)
+        cy.get('#Address2Frm_country_id').select(testData.country)
+        cy.get('#Address2Frm_zone_id').select(testData.region2)
+        cy.get('#Address2Frm_postcode').type(testData.zip2)
+    }
 })
 

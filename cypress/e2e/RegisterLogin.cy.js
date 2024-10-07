@@ -9,7 +9,7 @@ describe('Register and Login test suite', () => {
             globalThis.testData = testData;
         })
     })
-    beforeEach('navigate to the Homepage', () => {
+    beforeEach('Navigate to the Homepage', () => {
         cy.visit('/')
     })
 
@@ -39,7 +39,7 @@ describe('Register and Login test suite', () => {
 
     it('User successfully logs in with a valid email and password', () => {
         cy.contains('#customernav', 'Login or register').click()
-        cy.loginAs(testData.firstName, testData.password)
+        cy.loginAs(testData.loginName, testData.password)
         cy.url().should('eq', Cypress.config().baseUrl + 'index.php?rt=account/account')
         cy.contains('.menu_text', 'Welcome back Slaven').should('be.visible')
         cy.get('.side_account_list').contains('Logoff').click()
