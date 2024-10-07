@@ -1,15 +1,26 @@
 {
     "firstName": "Slaven",
     "lastName": "Bogdan",
-    "email": "slaven.bogdan@test.com",
+    "email": "slavenn@test.com",
     "telephone": "099123456789",
     "company": "Test Company",
-    "address": "Street 123",
+    "address": "Vukovarska 110",
     "city": "Osijek",
     "zip": "31000",
     "phone": "0991234567",
     "country": "Croatia",
-    "region": "Bristol",
-    "loginName": "slaven",
-    "password": "Test12345"
+    "region": "Osijek-Baranja",
+    "loginName": "slavenn",
+    "password": "Test12345",
+    "sucessfullyRegistrationText": "Your Account Has Been Created!",
+    "firstName2": "Josip",
+    "lastName2": "Blazevic",
+    "address2": "Ilica 32",
+    "city2": "Zagreb",
+    "zip2": "10000",
+    "country2": "Croatia",
+    "region2": "Zagreb",
+    "productName": "Pour Homme Eau de Toilette"
+    
+
   }
